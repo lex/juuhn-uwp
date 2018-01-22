@@ -6,8 +6,23 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
-
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-
-    </Grid>
+    <RelativePanel Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <TextBlock x:Name="TitleTextBlock"
+           TextWrapping="Wrap"
+           Text="juuHN Xbox One Edition - Xbox One X Enhanced"
+           Margin="28,0,-4,24"
+           Style="{StaticResource TitleTextBlockStyle}"/>
+        <GridView x:Name="gridView" ItemsSource="{x:Bind ViewModel.Stories}" HorizontalAlignment="Left" Margin="10" VerticalAlignment="Top" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True" RelativePanel.Below="TitleTextBlock">
+            <GridView.ItemTemplate>
+                <DataTemplate x:DataType="local:Story">
+                    <StackPanel Margin="6">
+                        <TextBlock Text="{x:Bind Title}" FontWeight="Bold" HorizontalAlignment="Left" MinWidth="400" MaxWidth="400"/>
+                        <TextBlock Text="{x:Bind Score}" HorizontalAlignment="Left"/>
+                        <TextBlock Text="{x:Bind By}" HorizontalAlignment="Left"/>
+                        <TextBlock Text="{x:Bind URL}" HorizontalAlignment="Left" MinWidth="400" MaxWidth="400"/>
+                    </StackPanel>
+                </DataTemplate>
+            </GridView.ItemTemplate>
+        </GridView>
+    </RelativePanel>
 </Page>
